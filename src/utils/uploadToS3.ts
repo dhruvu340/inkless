@@ -1,0 +1,26 @@
+export async function uploadToS3(file: File) {
+
+  const response = await fetch("/api/upload", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      fileName: file.name,
+      fileType: file.type,
+    }),
+  });
+
+  const { uploadUrl, fileUrl } =
+    await response.json();
+
+  await fetch(uploadUrl, {
+    method: "PUT",
+    headers: {
+      "Content-Type": file.type,
+    },
+    body: file,
+  });
+
+  return fileUrl;
+}

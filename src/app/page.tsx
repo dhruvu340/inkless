@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Fileupload from "@/components/ui/fileupload";
 import { UserButton } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
 import {LogIn} from "lucide-react"
@@ -26,7 +27,7 @@ export default async  function Home(){
          <p className="max-w-xl mt-4 text-blue-200 text-base">Turn dense documents into interactive conversations. Inkless lets you upload any PDF and instantly get answers, summaries, and insights using powerful AI. It’s like having a personal assistant who has memorized every page.</p>
           <div className="w-full mt-4">
             {isAuth ? (
-              <h1 className="text-white text-xl">Upload file</h1>
+              <Fileupload/>
             ):(
               <Link href="/sign-in">
                 <Button className="text-xl p-6 cursor-pointer">
