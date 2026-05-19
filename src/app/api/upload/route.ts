@@ -6,6 +6,7 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
 import { s3 } from "@/lib/s3";
 
+
 export async function POST(req: NextRequest) {
 
   const { fileName, fileType } = await req.json();
@@ -32,5 +33,7 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({
     uploadUrl,
     fileUrl,
+    fileKey:key,
+    fileName
   });
 }

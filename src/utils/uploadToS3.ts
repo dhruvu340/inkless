@@ -11,7 +11,7 @@ export async function uploadToS3(file: File) {
     }),
   });
 
-  const { uploadUrl, fileUrl } =
+  const { uploadUrl, fileUrl ,fileKey,fileName} =
     await response.json();
 
   await fetch(uploadUrl, {
@@ -22,5 +22,7 @@ export async function uploadToS3(file: File) {
     body: file,
   });
 
-  return fileUrl;
+  return {
+    fileKey,fileUrl,fileName
+  }
 }

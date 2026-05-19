@@ -36,9 +36,12 @@ const Fileupload = () => {
         "Failed to get upload URL"
       );
     }
+    const body =await response.json();
 
-    const { uploadUrl, fileUrl } =
-      await response.json();
+    const {uploadUrl,
+    fileUrl,
+    fileKey,
+    fileName} = body;
 
     
     const uploadResponse = await fetch(
@@ -58,7 +61,10 @@ const Fileupload = () => {
       );
     }
 
-    return fileUrl;
+    return {uploadUrl,
+    fileUrl,
+    fileKey,
+    fileName}
   };
 
   const {
