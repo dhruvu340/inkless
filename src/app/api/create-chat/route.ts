@@ -7,7 +7,7 @@ export async function POST (req:NextRequest){
         return NextResponse.json({message:"chat created successfully",fileUrl},{status:201});  
     } catch (error) {
        return NextResponse.json({
-            message : "Error while Loading the server",
+            message : "Internal Server Error",
         },{status:500})
     }
 }

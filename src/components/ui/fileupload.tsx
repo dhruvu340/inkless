@@ -5,10 +5,20 @@ import React, { useState } from "react";
 import { Inbox, Loader2 } from "lucide-react";
 
 import { useDropzone } from "react-dropzone";
+import axios from "axios"
 
 import { toast } from "sonner";
+import { useMutation } from "@tanstack/react-query";
 
 const Fileupload = () => {
+  const {mutate,isPending} = useMutation({
+    mutationFn : async({fileKey,fileName} : {fileKey:string,fileName:string})=>{
+      const response = await axios.post('api/create-chat',{
+        fileKey,fileName
+      })
+      return response.data;
+    }
+  });
 
   const [loading, setLoading] =
     useState(false);
@@ -61,7 +71,7 @@ const Fileupload = () => {
       );
     }
 
-    return {uploadUrl,
+    return {
     fileUrl,
     fileKey,
     fileName}
@@ -81,25 +91,40 @@ const Fileupload = () => {
 
       const file = acceptedFiles[0];
 
-      if (!file) return;
+      if (!file) {
+        toast.error("Please upload a file");
+        return;
+      }
+      if(file.size>10*1024*1024){
+        toast.error("Too Large Size File");
+        return;
+      }
+      
 
       try {
 
         setLoading(true);
 
-        const uploadedUrl =
+        const data =
           await uploadFile(file);
-
+        if(!data.fileKey||!data.fileName){
+            toast.error("Internal Server Error");
+            return ;
+          }
         
+          
+          mutate(data,{
+            onSuccess : (data) => {
+              toast.success(data.message);
+            },
+            onError:(err)=>{
+              toast.error("error while creating chat");
+            }
+          });
 
-        toast.success(
-          "PDF uploaded successfully"
-        );
+      
 
       } catch (error) {
-
-        console.error(error);
-
         toast.error(
           "Upload failed"
         );
@@ -136,7 +161,7 @@ const Fileupload = () => {
 
         <input {...getInputProps()} />
 
-        {loading ? (
+        {loading||isPending ? (
           <>
             <Loader2
               className="

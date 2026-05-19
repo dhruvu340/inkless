@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "sonner";
+import Provider from "@/components/provider";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -29,11 +30,16 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-    <html
+    
+      <Provider>
+        <html
       lang="en"
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
     >
       <body className="min-h-full flex flex-col">{children} <Toaster richColors position="top-right" /></body>
-    </html></ClerkProvider>
+    </html>
+      </Provider>
+    
+    </ClerkProvider>
   );
 }
