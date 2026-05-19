@@ -15,7 +15,7 @@ const Fileupload = () => {
 
   const uploadFile = async (file: File) => {
 
-    // Get presigned URL
+  
     const response = await fetch(
       "/api/upload",
       {
@@ -40,7 +40,7 @@ const Fileupload = () => {
     const { uploadUrl, fileUrl } =
       await response.json();
 
-    // Upload to S3
+    
     const uploadResponse = await fetch(
       uploadUrl,
       {
@@ -84,7 +84,7 @@ const Fileupload = () => {
         const uploadedUrl =
           await uploadFile(file);
 
-        console.log(uploadedUrl);
+        
 
         toast.success(
           "PDF uploaded successfully"
