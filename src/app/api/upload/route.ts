@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
     s3,
     command,
     {
-      expiresIn: 60,
+      expiresIn: 300,
     }
   );
 
