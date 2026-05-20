@@ -40,6 +40,8 @@ const Fileupload = () => {
     onSuccess: (data: ResponseType) => {
      const url = data.fileUrl.split(" ").join("%20");
      console.log(url);
+
+     console.log(data.pages);
      
       toast.success(`${data.message || "Chat created successfully"}`);
     },
