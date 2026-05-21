@@ -6,7 +6,7 @@ import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import { toast } from "sonner";
 import { useMutation } from "@tanstack/react-query";
-import { ResponseType } from "@/app/api/create-chat/route";
+
 
 
 interface UploadedData {
@@ -37,13 +37,9 @@ const Fileupload = () => {
       
       return response.data;
     },
-    onSuccess: (data: ResponseType) => {
-     const url = data.fileUrl.split(" ").join("%20");
-     console.log(url);
-
-     console.log(data.pages);
-     
-      toast.success(`${data.message || "Chat created successfully"}`);
+    onSuccess: ({chat_id}) => {
+     toast.success("chat created successfully");
+     console.log(chat_id);
     },
     onError: (error: any) => {
      

@@ -26,3 +26,8 @@ export async function uploadToS3(file: File) {
     fileKey,fileUrl,fileName
   }
 }
+
+
+export function getS3Url(fileKey: string) {
+  return `https://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${fileKey}`;
+}
