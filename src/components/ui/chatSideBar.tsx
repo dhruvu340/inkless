@@ -73,7 +73,7 @@ const ChatSideBar = ({
           </div>
 
           <Link href="/">
-            <Button className="w-full h-11 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 active:from-blue-700 active:to-blue-600 text-white font-semibold transition-all duration-300 shadow-lg shadow-blue-500/30 border border-blue-400/20 hover:shadow-blue-500/50 flex items-center justify-center gap-2">
+            <Button className="w-full h-11 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 cursor-pointer hover:to-blue-400 active:from-blue-700 active:to-blue-600 text-white font-semibold transition-all duration-300 shadow-lg shadow-blue-500/30 border border-blue-400/20 hover:shadow-blue-500/50 flex items-center justify-center gap-2">
               <PlusCircle className="w-4 h-4" />
               New Chat
             </Button>

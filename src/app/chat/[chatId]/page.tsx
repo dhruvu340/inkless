@@ -1,3 +1,4 @@
+import Chat from "@/components/ui/chat";
 import ChatSideBar from "@/components/ui/chatSideBar";
 import PdfViewer from "@/components/ui/pdfViewer";
 import { db } from "@/lib/db";
@@ -59,7 +60,9 @@ const Page = async ({
 
        
         <div className="flex-1 overflow-y-auto pt-20 lg:pt-6 px-3 sm:px-6 lg:px-6 pb-6 bg-gradient-to-br from-slate-950 via-slate-900/30 to-slate-950 min-w-0">
-          <div className="w-full h-full rounded-2xl lg:rounded-3xl border border-slate-700/40 bg-gradient-to-br from-slate-800/30 via-slate-900/20 to-slate-800/30 backdrop-blur-xl shadow-2xl shadow-slate-950/60 overflow-hidden transition-all duration-500 hover:border-slate-600/50 hover:shadow-slate-950/80" />
+          <div className="w-full h-full rounded-2xl lg:rounded-3xl border border-slate-700/40 bg-gradient-to-br from-slate-800/30 via-slate-900/20 to-slate-800/30 backdrop-blur-xl shadow-2xl shadow-slate-950/60 overflow-hidden transition-all duration-500 hover:border-slate-600/50 hover:shadow-slate-950/80" >
+          <Chat/>
+          </div>
         </div>
 
        

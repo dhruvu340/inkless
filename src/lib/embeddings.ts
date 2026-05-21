@@ -3,13 +3,14 @@ import {
   OpenAIApi,
 } from "openai-edge";
 
+export const runtime = "edge";
 const config = new Configuration({
   apiKey: process.env.OPENAI_SECRET,
   basePath:
     "https://openrouter.ai/api/v1",
 });
 
-const openai = new OpenAIApi(config);
+export const openai = new OpenAIApi(config);
 
 export async function getEmbeddings(
   text: string
